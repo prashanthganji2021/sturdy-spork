@@ -1,0 +1,42 @@
+{
+    "parameters": {
+      "welcome_message": {
+        "defaultValue": {
+          "value": "Welcome to our app!"
+        },
+        "conditionalValues": {
+          "ios": {
+            "value": "Welcome, iOS user!"
+          },
+          "android": {
+            "value": "Welcome, Android user!"
+          }
+        }
+      },
+      "feature_enabled": {
+        "defaultValue": {
+          "value": "false"
+        },
+        "conditionalValues": {
+          "high_value_users": {
+            "value": "true"
+          }
+        }
+      }
+    },
+    "conditions": [
+      {
+        "name": "high_value_users",
+        "expression": "app.user().lifetimeValue > 1000"
+      },
+      {
+        "name": "ios",
+        "expression": "device.os == 'iOS'"
+      },
+      {
+        "name": "android",
+        "expression": "device.os == 'Android'"
+      }
+    ]
+  }
+  

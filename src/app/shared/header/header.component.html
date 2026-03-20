@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;" max-width="0" max-height="0">
+  <symbol id="icon-dashboard" viewBox="0 0 24 24">
+    <path d="M3 13h8V3H3v10zm10 8h8v-6h-8v6zM3 21h8v-6H3v6zm10-8h8V3h-8v10z"/>
+  </symbol>
+</svg>
+
+<style>
+.icon {
+    width: 24px; /* Adjust the size as needed */
+    height: 24px; /* Adjust the size as needed */
+    fill: currentColor; /* Ensures the icon inherits the text color */
+    vertical-align: middle; /* Aligns the icon with text */
+}
+</style>
+
+<nav class="navbar ibox-content mt-2">
+    <!-- <div class="navbar-left">
+        <a href="#" class="nav-link">
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-dashboard"></use>
+            </svg>
+            Dashboard
+        </a>
+    </div> -->
+    <div class="navbar-center row">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link text-weight-400" [ngClass]="{'active': activeLink === 'naukari_setup'}" (click)="activeLink = 'naukari_setup'; goToNaukariSetup()">Naukari Setup</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-weight-400" [ngClass]="{'active': activeLink === 'dashboard'}" (click)="activeLink = 'dashboard'; goToDashboard()">Emailing</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-weight-400" [ngClass]="{'active': activeLink === 'settings'}" (click)="activeLink = 'settings'; goToReports()">My Details</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-weight-400" [ngClass]="{'active': activeLink === 'naukari'}" (click)="activeLink = 'naukari'; goToNaukari()">Naukari</a>
+            </li>
+        </ul>
+    </div>
+    <div class="navbar-right">
+      <button  (click)="toggleMenu()"
+      class="menu-button">&#9776;</button>
+    </div>
+</nav>
+
+<div class="d-flex justify-content-between">
+    <div class="app-menu " *ngIf="showMenu">
+        <div class="col-md-12 drop-list " (click)="goToUserMangement()">
+            <span>
+                <h4 class="p-1 align-self-center font-12 ">
+                    LogOut
+                </h4>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+</div>
+
+
+
+
+
+
+
+
+

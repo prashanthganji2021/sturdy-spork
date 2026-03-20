@@ -1,0 +1,96 @@
+<ng-toast [style]="{width:'300px'}"></ng-toast>
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 row">
+      <h1>Get Naukari Data</h1>
+
+      <div class="button-group">
+        <button class="btn btn-secondary" (click)="toggleConfig()">Config</button>
+        <button class="btn btn-danger" (click)="clearData()">Delete all Data</button>
+        <!-- <button class="btn btn-primary" (click)="updateData()">Update Data</button>
+        <button class="btn btn-success" (click)="exportData()">Export</button>
+        <button class="btn btn-info" (click)="checkData()">Check My Data</button>
+        <button class="btn btn-warning" (click)="searchURL()">Search URL</button>
+        -->
+      </div>
+
+      <div class="row" *ngIf="isConfigVisible">
+        <div class="json-input-container">
+          <h2>JSON Input</h2>
+          <textarea [(ngModel)]="jsonInput" rows="10" cols="50" placeholder="Enter JSON here..."></textarea>
+          <br />
+          <ng-container *ngIf="validJsonInput">
+            <ngx-json-viewer [json]="validJsonInput" [expanded]="false"></ngx-json-viewer>
+          </ng-container>
+          <button class="button-3" (click)="saveJson()">Analyze Data JSON</button>
+          <button class="button-1" (click)="onSubmit()">Save Data JSON</button>
+          <div *ngIf="errorMessage" class="error button-1">{{ errorMessage }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div>
+  <div *ngFor="let column of displayedColumns; let i = index">
+    <input
+      type="text"
+      [(ngModel)]="searchTerms[i]"
+      placeholder="Search {{ column }}"
+      class="form-control"
+    />
+  </div>
+</div> -->
+<div class="table-responsive table-responsive-sm table-responsive-md table-responsive-lg table-responsive-xl table table-striped" id="table">
+  <table datatable [dtOptions]="dtOptions" class="mat-elevation-z8">
+    <thead>
+      <tr>
+        <ng-container *ngFor="let column of displayedColumns; let i = index">
+          <th>
+            <ng-container *ngIf="column === 'title'  || column === 'companyName'">
+              <input
+              type="text"
+              [(ngModel)]="searchTerms[i]"
+              (input)="getSuggestions(i, $event)"
+              placeholder="{{ column }}"
+
+              class="form-control"
+            />
+            <ul *ngIf="suggestions[i]?.length" class="suggestions-list">
+              <li *ngFor="let suggestion of suggestions[i]" (click)="selectSuggestion(suggestion, i)">
+                {{ displayTxt(suggestion) }}
+              </li>
+            </ul>
+            </ng-container>
+            <ng-container *ngIf="column !== 'title'  && column !== 'companyName'">
+             {{ column }}
+            </ng-container>
+
+          </th>
+        </ng-container>
+      </tr>
+    </thead>
+    <tbody *ngIf="filteredJobListings.length > 0">
+      <tr *ngFor="let job of filteredJobListings | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
+        <td *ngFor="let column of displayedColumns; let i = index">
+          <div *ngIf="i === 0; " style="width: 200px;">
+            <button *ngIf="!job.alreadyApplied" class="btn btn-primary button-10" (click)="ApplyJob(job); job.alreadyApplied = true">Apply</button>
+            <button *ngIf="job.alreadyApplied" class="btn btn-success button-10" (click)="ApplyJob(job);">Applied</button>
+            <!-- {{ job[column] }} -->
+          </div>
+          <div *ngIf="i !== 0; " class="table-column" style="width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+          {{ job[column] }}</div>
+
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+
+
+
+</div>

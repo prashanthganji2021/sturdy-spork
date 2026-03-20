@@ -1,0 +1,33 @@
+<!-- linkedin-profile.component.html -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>LinkedIn Profile</h1>
+      <p>Click the button below to authenticate with LinkedIn and view your profile details.</p>
+      <button class="btn btn-primary" (click)="handleAuthCallback('test')">Get Profile</button>
+    </div>
+  </div>
+</div>
+
+
+<div class="profile-container" *ngIf="userProfile">
+  <h2>User Profile</h2>
+  <p><strong>Name:</strong> {{ userProfile.localizedFirstName }} {{ userProfile.localizedLastName }}</p>
+  <p><strong>Headline:</strong> {{ userProfile.headline }}</p>
+  <img *ngIf="userProfile.profilePicture['displayImage']" [src]="userProfile.profilePicture['displayImage']" alt="Profile Picture">
+</div>
+
+<!-- search deails by profile url -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Serach by Profile URL</h1>
+      <p>Enter the profile URL below to search for the user's details.</p>
+      <input type="text" class="form-control" [(ngModel)]="profileUrl" placeholder="Enter Profile URL">
+      <button class="btn btn-primary" (click)="searchProfile(profileUrl)">Search Profile</button>
+    </div>
+  </div>
+
+

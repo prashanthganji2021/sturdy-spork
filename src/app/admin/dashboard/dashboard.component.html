@@ -1,0 +1,174 @@
+<!-- back to login -->
+
+<!--
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Dashboard</h1>
+    </div>
+
+  <div class="col-md-12">
+    <button class="btn btn-primary" (click)="goToLogin()">Back to Login</button>
+  </div>
+  </div>
+<ng-toast [style]="{width:'300px'}"></ng-toast>
+
+</div> -->
+<!-- <app-header></app-header> -->
+<ng-toast [style]="{width:'300px'}"></ng-toast>
+
+<div class="content-wrapper pt-3 pb-3 ml-3 mr-3">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <div class="input-group mb-3">
+            <input
+              type="email"
+              class="form-control"
+              placeholder="Email address"
+              [(ngModel)]="email"
+              name="email"
+              aria-label="Email address"
+            >
+            <div class="input-group-append">
+              <button
+                type="button"
+                class="btn btn-primary"
+                (click)="sendEmail()"
+              >
+                Send
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- <div class="input-group-append">
+  <button
+    type="button"
+    class="btn btn-primary"
+    (click)="sendToAllEmail()"
+  >
+    Send To All
+  </button>
+</div>
+<div class="input-group-append">
+  <button
+    type="button"
+    class="btn btn-primary"
+    (click)="CustomEmail()"
+  >
+    Custom Email
+  </button>
+</div> -->
+<div class="row d-flex justify-content-center p-3">
+  <!-- excluded e
+  <input
+    type="email"
+    class="form-control"
+    placeholder="Email address"
+    [(ngModel)]="email" -->
+</div>
+
+<div class="row d-flex justify-content-center p-3">
+  <div class="col-auto">
+    <button class="btn btn-primary button-3" (click)="sendToAllEmail()">Send To All</button>
+  </div>
+
+
+  <div class="col-auto">
+    <button type="submit" class="btn btn-primary button-3" (click)="CustomEmail()">Custom Email</button>
+  </div>
+</div>
+
+<div class="container" *ngIf="customEmail" >
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Compose email</h1>
+      </div>
+    </div>
+    <!-- <div class="row">
+      <div class="col-md-12">
+        <input type="text" class="form-control" placeholder="Enter Linkedin Profile URL" [(ngModel)]="linkedinUrl">
+      </div>
+    </div> -->
+
+<!--
+    <div class="row d-flex justify-content-center p-3">
+      <div class="col-auto">
+        <button class="btn btn-primary button-3" (click)="searchNumber()">Search</button>
+      </div>
+
+
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary button-3" (click)="clear()">Clear</button>
+      </div>
+    </div> -->
+
+<!--
+    <div class="row" *ngIf="loading">
+      <div class="col-md-12">
+        <h2 [ngClass]="{'result-text': true, 'not-available': !number}">Number: {{ number ? number : 'Not Available' }}</h2>
+      </div>
+    </div> -->
+    <div class="form-group">
+      <label for="emailSubject">Subject</label>
+      <input type="text" class="form-control" id="emailSubject" name="emailSubject" [(ngModel)]="emailSubjectContent" placeholder="Enter subject" required>
+    </div>
+    <div class="form-group">
+      <label for="ccEmail">CC</label>
+      <input type="email" class="form-control" id="ccEmail" name="ccEmail" [(ngModel)]="ccEmailContent" placeholder="Enter CC email">
+    </div>
+
+    <div class="form-group">
+      <label for="emailContent">Email Content</label>
+      <!-- select raw if need -->
+       <ng-container *ngIf="!rawHTML">
+      <ckeditor id="emailContent" name="emailContent" [editor]="Editor" [(ngModel)]="model.editorData"></ckeditor>
+       </ng-container>
+       <ng-container *ngIf="rawHTML">
+      <input type="text" class="form-control" id="emailContent" name="emailContent" [(ngModel)]="model.editorData" placeholder="Enter email content" >
+       </ng-container>
+      <button class="btn btn-primary rawHtmlBTN" (click)="rawHTML = !rawHTML">Raw</button>
+
+
+
+    </div>
+
+    <div class="row d-flex justify-content-center p-3">
+      <div class="col-auto">
+        <button class="btn btn-primary button-3" (click)="sendCustomEmail()">Send</button>
+      </div>
+    </div>
+
+</div>
+
+
+
+
+  <table datatable [dtOptions]="dtOptions" class="row-border hover   table-striped table-bordered" width="100%" *ngIf="emailList.length">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Sent To</th>
+        <th>Sender</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of emailList">
+        <td>{{ user._id }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.senderEmail }}</td>
+        <td>{{ user.date }}</td>
+
+      </tr>
+    </tbody>
+  </table>
+

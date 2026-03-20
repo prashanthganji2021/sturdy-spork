@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+ @import "src/assets/css/bootstrap.min.css";
+@import "src/assets/css/dataTables.bootstrap5.min.css";
+@import "src/assets/css/style.css";
+/* app.component.css */
+
+@import 'ckeditor5/ckeditor5.css';
+
+
+/* add table styles from datatable free */
+
+/* @import "src/assets/css/datatables.css"; */

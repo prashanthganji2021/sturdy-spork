@@ -1,0 +1,71 @@
+<ng-toast [style]="{width:'300px'}"></ng-toast>
+
+
+<form id="emailForm" (ngSubmit)="onSubmit(emailFormRef.value)" #emailFormRef="ngForm">
+  <!-- Email Subject -->
+  <div class="form-group">
+    <label for="emailSubject">Subject</label>
+    <input type="text" class="form-control" id="emailSubject" name="emailSubject" [(ngModel)]="emailSubject" placeholder="Enter subject" required>
+  </div>
+
+  <!-- CC Email -->
+  <div class="form-group">
+    <label for="ccEmail">CC</label>
+    <input type="email" class="form-control" id="ccEmail" name="ccEmail" [(ngModel)]="ccEmail" placeholder="Enter CC email">
+  </div>
+
+  <!-- BCC Email -->
+  <div class="form-group">
+    <label for="bccEmail">BCC</label>
+    <input type="email" class="form-control" id="bccEmail" name="bccEmail" [(ngModel)]="bccEmail" placeholder="Enter BCC email">
+  </div>
+
+  <!-- API Key for Brevo -->
+  <div class="form-group">
+    <label for="apiKey">API Key</label>
+    <input type="text" class="form-control" id="apiKey" name="apiKey" [(ngModel)]="apiKey" placeholder="Enter API Key" required>
+  </div>
+
+  <!-- sender email, name -->
+  <div class="form-group">
+    <label for="senderEmail">Sender Email</label>
+    <input type="email" class="form-control" id="senderEmail" name="senderEmail" [(ngModel)]="senderEmail" placeholder="Enter sender email" required>
+  </div>
+  <div class="form-group">
+    <label for="senderEmail">Sender Name</label>
+    <input type="text" class="form-control" id="senderName" name="senderName" [(ngModel)]="senderName" placeholder="Enter sender Name" required>
+  </div>
+  <div class="form-group">
+    <label for="FilePath">FilePath</label>
+    <input type="text" class="form-control" id="FilePath" name="FilePath" [(ngModel)]="FilePath" placeholder="FilePath" >
+  </div>
+
+  <!-- Email Content with CKEditor -->
+  <div class="form-group">
+    <label for="emailContent">Email Content</label>
+    <ckeditor id="emailContent" name="emailContent" [editor]="Editor" [(ngModel)]="model.editorData"></ckeditor>
+  </div>
+<!-- cookie: `_t_ds=34cfb661728399895-5434cfb66-034cfb66; J=0; _gcl_au=1.1.4677290.1728399898; NKWAP=e837dc8ef38ea7e8ffb5f0fea3c3e139a08b4d3781c6704ade46d9e33d68c16c3d40a28c7ab7327d~e837dc8ef38ea7e8ffb5f0fea3c3e139a08b4d3781c6704ade46d9e33d68c16c3d40a28c7ab7327d~1~0; MYNAUKRI[UNID]=356bdda2cbf944f4a518e4663f3d39c7; nauk_ps=default; _fbp=fb.1.1728399951394.499248737308682624; test=naukri.com; _ff_ds=0683801001728400552-5B954F14AAF2-10D638AFA1F9; PS=e837dc8ef38ea7e8ffb5f0fea3c3e139a08b4d3781c6704ade46d9e33d68c16c3d40a28c7ab7327d; __utmz=266160400.1729870217.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _gcl_gs=2.1.k1$i1733549946$u93512962; _gcl_aw=GCL.1733549947.Cj0KCQiA3sq6BhD2ARIsAJ8MRwU69fY7K8rvpLmLz8d7zO7pBANz_RI4DfJjuNJFfAu4JC45_dKO_AAaArzoEALw_wcB; _gcl_dc=GCL.1733549947.Cj0KCQiA3sq6BhD2ARIsAJ8MRwU69fY7K8rvpLmLz8d7zO7pBANz_RI4DfJjuNJFfAu4JC45_dKO_AAaArzoEALw_wcB; nauk_rt=63fcd7efe41a45b4b29e978b5726cc66; nauk_sid=63fcd7efe41a45b4b29e978b5726cc66; nauk_otl=63fcd7efe41a45b4b29e978b5726cc66; __utma=266160400.284880606.1728399898.1734324684.1734534241.4; _ga=GA1.1.284880606.1728399898; _ga_89XHHLE6WS=GS1.1.1734536715.7.0.1734536715.0.0.0; tStp=1734587425787; nauk_at=eyJraWQiOiIyIiwidHlwIjoiSldUIiwiYWxnIjoiUlM1MTIifQ.eyJ1ZF9yZXNJZCI6MjgyMDA2OTI2LCJzdWIiOiIyOTMwNjc3NzQiLCJ1ZF91c2VybmFtZSI6ImdhbmppYW5pbEBvdXRsb29rLmNvbSIsInVkX2lzRW1haWwiOmZhbHNlLCJpc3MiOiJJbmZvRWRnZSBJbmRpYSBQdnQuIEx0ZC4iLCJ1c2VyQWdlbnQiOiJNb3ppbGxhLzUuMCAoWDExOyBMaW51eCB4ODZfNjQpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS8xMjYuMC4wLjAgU2FmYXJpLzUzNy4zNiIsImlwQWRyZXNzIjoiMTc1LjEwMS4yMi4xMjMiLCJ1ZF9pc1RlY2hPcHNMb2dpbiI6ZmFsc2UsInVzZXJJZCI6MjkzMDY3Nzc0LCJzdWJVc2VyVHlwZSI6IiIsInVzZXJTdGF0ZSI6IkFVVEhFTlRJQ0FURUQiLCJ1ZF9pc1BhaWRDbGllbnQiOmZhbHNlLCJ1ZF9lbWFpbFZlcmlmaWVkIjpmYWxzZSwidXNlclR5cGUiOiJqb2JzZWVrZXIiLCJzZXNzaW9uU3RhdFRpbWUiOiIyMDI0LTEyLTA5VDE0OjE3OjU2IiwidWRfZW1haWwiOiJnYW5qaWFuaWxAb3V0bG9vay5jb20iLCJ1c2VyUm9sZSI6InVzZXIiLCJleHAiOjE3MzUxNDYxOTAsInRva2VuVHlwZSI6ImFjY2Vzc1Rva2VuIiwiaWF0IjoxNzM1MTQyNTkwLCJqdGkiOiI2M2ZjZDdlZmU0MWE0NWI0YjI5ZTk3OGI1NzI2Y2M2NiIsInBvZElkIjoicHJvZC03NGY5NzdjNjZkLXRkbW5yIn0.wF_C9jR3mjWeDG_O5BmaF_5RWvx-jYUAM0wWaJuwLgQBIK0yEZy5PfflPV69jnrH5yN5HXhvmcQ0zf_I0Ed7lkGrIxF6jEqQwWkntpgPe8CSlDcIvoHcLkbEzdrMLO4VqjharJ8gOjtZadI7Tpz3AZaoNSuH26_ARoQuqdjFbYrnQ3p8-1YwiwRUM2ChKCy3OVVmgvdCCfzqginFYZjNOJB4Clup0929C0i8GsvS7uiwnpTSJM5KkLwDMKBAqjr-sGhe7ZOUnhRfq45Ei9A3BRvfT9pFoBFdP6VKjkj9xxV50iep62MSV-acEISysO1MjMm2mj0dvg2Z8ahZixrosA; is_login=1; __gads=ID=a9f5bef7637c902a:T=1728400793:RT=1735142592:S=ALNI_MYcMmjrVr-VAL56lLk_BO5OqiKhrg; __gpi=UID=00000f3a61015a54:T=1728400793:RT=1735142592:S=ALNI_MYytezqzBb0NQiPPeAtmHl6lJP6dw; __eoi=ID=950a32cfdba0f759:T=1728400793:RT=1735142592:S=AA-AfjbNAjMPQXcY24QoWNZUM6Ks; ACTIVE=1735142596; PHPSESSID=rohm15gkl977ab9jldv6m6f2j5; bm_mi=7D2BFE9FB5F5BDC1A02092F1C30249AF~YAAQP60cuOOPQq2TAQAA3uGO/hoAPraXzfJOXtmCl2xvHQQ8Z9o3g3Rtjuhzb7aOVs/wPFqx0hhgzXoAf9hWu3YzH3p0Gf7oP7pNlHZpJWk/X2Kdmqi9vHi6dcO4zd6HOR0p9jzQ4PyGupPx7UYiJKbVcGcnYO9CrnDFHlORfNnONcE9erEu+IDrBoQTn+m38TPQ3v5yiDVJxYX2QrtktaukIdNPDKe1ZBXWS5c8YVEN06Y+Cju7c45gm5NbcNr2yeA8392YnGmKv5LQPEdSlSZLsqfd9LtNuCE/rn3nWZueYVXyytLRHZ4Ydf0A/Qu+lqMZn8X7exaiqFQcAy37zlYW5iCK~1; ak_bmsc=C9AD4163E692C1E9FAEC1846BCA7E392~000000000000000000000000000000~YAAQP60cuCqQQq2TAQAAf+WO/hoBAUbXBBEuaUgjtO3B2X2qi3li85m+LgYp9cuSkF/Aq0jvxxtgOcqjQPWXdVxKB2YflbHz7rBZl7WdE6Fu5oWcsMBcQ9fHlhyTx+jxg/d9Fv5XSPNe5VTPccM7gRPl43GQqRwSa6fGbn/PjJcUEjsULAxHwmy51s+6sDoQQgTBx389PGgOzojS0l8gqASr8VY3PZuedy4p3HDujiM9ogScR+/ojdgupK73k+riy6gyJAACfCxaMHrhWAmrwLNNu4/JpcA1pN1oSwpWhYck+S3ALFoTFTe/Lyo8a3W6w6238u21nOaJPoRh3DF2S9ItTxwzh+7ccS5kXFiBR+AvjCGJJIPmCqWVR5qzG60Hr+lGDyyeSpOPQ1xWirSWdv5R2fSERwPD3q+ylfGD8FKPHzUpYAIzbT0og6HgCGgLVc4pl1kgvepT/nEe380BAjkpnd0NjBGrAQnttXwv0eU6/4tqs4U3C9lJqvoqL9/Lx+yrN0xO3Q==; bm_sv=933F97EBA8443A61DE54DBF129D4D2AE~YAAQP60cuHuxQq2TAQAAsFWQ/hoSbc5XzTBjZrhMakLR2vFChJyiQ64LyDY6Hzd9Y2XO4o0q8v4om9xX/vAJMf6SKw4a3Qp65csZAqgEHGWShdVIpN1YZ293BFeMkrTPPtuu0JWuuAggzA75z8hkDXp9qwncqt80yzF9zfj3WqdBAbAwA+eJvlHJtvuDyOQmgo71FDBf+cfbhhSIaCfKyi5eiv2Tw7bFz2vO3rfJGmxnVWFM6VEgBggHH3nOq9Fqyg==~1; HOWTORT=cl=1735142613243&r=https%3A%2F%2Fwww.naukri.com%2Fmyapply%2FsaveApply%3FstrJobsarr%3D%5B121224008529%5D%26applytype%3Dsingle%26resId%3D282006926%26ApplyMode%3D1%26id%3D293067774%26src%3Dh%26logstr%3D--jobsearchDesk-9-F-0-1--17351426087828316--jobsearchDesk%26applySrc%3DjobsearchDesk%26multiApplyResp%3D%257B%2522121224008529%2522%253A200%257D%26jobTitle%3DSoftware%2520Development%2520Engineer&nu=https%3A%2F%2Fwww.naukri.com%2Fjob-listings-software-development-engineer-method-and-madness-technology-mumbai-all-areas-3-to-5-years-121224008529%3Fsrc%3DjobsearchDesk%26sid%3D17351426087828316%26xp%3D9%26px%3D1%26nignbevent_src%3DjobsearchDeskGNB&ul=1735142692188&hd=1735142692299; _ga_K2YBNZVRLL=GS1.1.1735142591.106.1.1735142692.60.0.0; J=0; PS=e837dc8ef38ea7e8ffb5f0fea3c3e139a08b4d3781c6704ade46d9e33d68c16c3d40a28c7ab7327d`,
+    authorization: `Bearer eyJraWQiOiIyIiwidHlwIjoiSldUIiwiYWxnIjoiUlM1MTIifQ.eyJ1ZF9yZXNJZCI6MjgyMDA2OTI2LCJzdWIiOiIyOTMwNjc3NzQiLCJ1ZF91c2VybmFtZSI6ImdhbmppYW5pbEBvdXRsb29rLmNvbSIsInVkX2lzRW1haWwiOmZhbHNlLCJpc3MiOiJJbmZvRWRnZSBJbmRpYSBQdnQuIEx0ZC4iLCJ1c2VyQWdlbnQiOiJNb3ppbGxhLzUuMCAoWDExOyBMaW51eCB4ODZfNjQpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS8xMjYuMC4wLjAgU2FmYXJpLzUzNy4zNiIsImlwQWRyZXNzIjoiMTc1LjEwMS4yMi4xMjMiLCJ1ZF9pc1RlY2hPcHNMb2dpbiI6ZmFsc2UsInVzZXJJZCI6MjkzMDY3Nzc0LCJzdWJVc2VyVHlwZSI6IiIsInVzZXJTdGF0ZSI6IkFVVEhFTlRJQ0FURUQiLCJ1ZF9pc1BhaWRDbGllbnQiOmZhbHNlLCJ1ZF9lbWFpbFZlcmlmaWVkIjpmYWxzZSwidXNlclR5cGUiOiJqb2JzZWVrZXIiLCJzZXNzaW9uU3RhdFRpbWUiOiIyMDI0LTEyLTA5VDE0OjE3OjU2IiwidWRfZW1haWwiOiJnYW5qaWFuaWxAb3V0bG9vay5jb20iLCJ1c2VyUm9sZSI6InVzZXIiLCJleHAiOjE3MzUxNDYxOTAsInRva2VuVHlwZSI6ImFjY2Vzc1Rva2VuIiwiaWF0IjoxNzM1MTQyNTkwLCJqdGkiOiI2M2ZjZDdlZmU0MWE0NWI0YjI5ZTk3OGI1NzI2Y2M2NiIsInBvZElkIjoicHJvZC03NGY5NzdjNjZkLXRkbW5yIn0.wF_C9jR3mjWeDG_O5BmaF_5RWvx-jYUAM0wWaJuwLgQBIK0yEZy5PfflPV69jnrH5yN5HXhvmcQ0zf_I0Ed7lkGrIxF6jEqQwWkntpgPe8CSlDcIvoHcLkbEzdrMLO4VqjharJ8gOjtZadI7Tpz3AZaoNSuH26_ARoQuqdjFbYrnQ3p8-1YwiwRUM2ChKCy3OVVmgvdCCfzqginFYZjNOJB4Clup0929C0i8GsvS7uiwnpTSJM5KkLwDMKBAqjr-sGhe7ZOUnhRfq45Ei9A3BRvfT9pFoBFdP6VKjkj9xxV50iep62MSV-acEISysO1MjMm2mj0dvg2Z8ahZixrosA`,
+    nkparam: 'cgJgSd/87QVW59GaFEn8XF/HdjoW/TRW6axMLsjxm6w5PPxDFzMk8/giWsDemEVf0gTPiMgQcINO6zh1vuwk3w==', -->
+  <!--  -->
+    <div class="form-group">
+      <label for="emailContent">Naukri Cookie</label>
+      <textarea class="form-control" id="naukriCookie" name="naukriCookie" [(ngModel)]="naukriCookie" placeholder="Enter Naukri Cookie" ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="emailContent">Naukri Authorization</label>
+      <textarea class="form-control" id="naukriAuthorization" name="naukriAuthorization" [(ngModel)]="nukriAuthorization" placeholder="Enter Naukri Authorization" ></textarea>
+    </div>
+
+  <div class="form-group">
+    <label for="emailContent">Naukri nkparam</label>
+    <textarea class="form-control" id="naukriNkparam" name="naukriNkparam" [(ngModel)]="naukriNkparam" placeholder="Enter Naukri nkparam" ></textarea>
+  </div>
+
+
+
+  <!-- Submit Button -->
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "send2hr",
+    "emailsystem": "send2hr"
+  },
+  "targets": {},
+  "etags": {}
+}

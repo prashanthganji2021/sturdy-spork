@@ -1,0 +1,49 @@
+/* linkedin-profile.component.css */
+
+/* Container for the profile display */
+.profile-container {
+  max-width: 600px; /* Set a max width for the profile card */
+  margin: 20px auto; /* Center the profile card */
+  padding: 20px; /* Add some padding */
+  border: 1px solid #e1e1e1; /* Light border */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  background-color: #ffffff; /* White background */
+}
+
+/* Title styles */
+h2 {
+  font-size: 24px; /* Title font size */
+  margin-bottom: 15px; /* Spacing below the title */
+  color: #0073b1; /* LinkedIn blue */
+}
+
+/* Paragraph styles */
+p {
+  font-size: 16px; /* Font size for paragraphs */
+  line-height: 1.5; /* Better line spacing */
+  color: #333; /* Dark gray color for text */
+}
+
+/* Profile picture styles */
+img {
+  max-width: 100px; /* Limit the image width */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 50%; /* Circular profile picture */
+  margin-top: 10px; /* Space above the image */
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .profile-container {
+    padding: 15px; /* Adjust padding for smaller screens */
+  }
+
+  h2 {
+    font-size: 20px; /* Smaller title font size */
+  }
+
+  p {
+    font-size: 14px; /* Smaller paragraph font size */
+  }
+}

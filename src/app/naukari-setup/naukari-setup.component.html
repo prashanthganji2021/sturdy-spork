@@ -1,0 +1,109 @@
+<div class="container py-5" >
+    <div class="card shadow rounded-4">
+        <div class="d-flex justify-content-left p-4">
+            <button class="btn  me-2 btn-success" (click)="cookieTab(true)">Cookie Storage</button>
+            <button class="btn ms-2  btn-success" (click)="cookieTab(false)">KeySetUp</button>
+        </div>
+    </div>
+</div>
+<div class="container py-5" *ngIf="showMenu">
+    <div class="card shadow rounded-4">
+        <div class="card-body p-4">
+            <h2 class="mb-4 text-center text-primary">Naukri Cookie Setup
+                <!-- hide and unhide -->
+
+            </h2>
+
+            <div class="mb-4">
+                <label for="cookieStorage" class="form-label fw-bold">Cookie Storage</label>
+                <input type="text" class="form-control" id="cookieStorage" [(ngModel)]="cookieStorage"
+                    placeholder="Paste your cookie storage JSON here" />
+                <div class="form-text mt-2">
+                    1. Open a new tab and log in to <strong>naukri.com</strong>.<br />
+                    2. Open the browser console (Ctrl + Shift + I) and run:
+                    <code>await this.cookieStore.getAll()</code><br />
+                    3. Right-click the output and select "Copy".<br />
+                    4. Paste the copied cookie data into the above field.
+                </div>
+                <!-- <button class="btn btn-success mt-3" (click)="saveCookieStorage()">Formate Cookie Storage</button>
+          <button class="btn btn-primary mt-3" (click)="saveCookieStorageToLocal()">Save Cookie Storage</button> -->
+                <div class="d-flex justify-content-center mt-3">
+                    <button class="btn btn-success me-2" (click)="saveCookieStorage()">Format Cookie Storage</button>
+                    <button class="btn btn-primary" (click)="saveCookieStorageToLocal()" *ngIf="cookieStorage">Save
+                        Cookie Storage</button>
+                    <button class="btn btn-danger ms-2" (click)="clearCookieStorage()">Clear Cookie Storage</button>
+                </div>
+            </div>
+
+            <div *ngIf=" formattedCookieStorage && formattedCookieStorage.length > 0">
+                <label for="formattedCookieStorage" class="form-label fw-bold">Formatted Cookie Storage</label>
+
+                <div class="table-responsive rounded">
+                    <table class="table table-striped table-hover align-middle mt-3">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of formattedCookieStorage; let i = index">
+                                <th scope="row">{{ i + 1 }}</th>
+                                <td>{{ item.name }}</td>
+                                <td>{{ item.value }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container py-5" *ngIf="!showMenu">
+    <div class="card shadow rounded-4">
+        <div class="card-body p-4">
+            <h2 class="mb-4 text-center text-primary">KEY Setup
+                <!-- hide and unhide -->
+
+            </h2>
+
+
+
+            <div *ngIf=" formattedCookieStorage && formattedCookieStorage.length > 0">
+                <label for="formattedCookieStorage" class="form-label fw-bold">Formatted Cookie Storage</label>
+
+                <div class="table-responsive rounded">
+                    <table class="table table-striped table-hover align-middle mt-3">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of FORM_KEYS; let i = index">
+                                <th scope="row">{{ item.id}}</th>
+                                <td>{{ item.key }}</td>
+                                <td>
+                                    <input type="text" class="form-control" id="cookieStorage" [(ngModel)]="item.value"
+                                         />
+                                    <div class="form-text mt-2">
+                                        {{ item.description }}
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="d-flex justify-content-center mt-3">
+                    <button class="btn btn-primary" (click)="saveKeySetUp()" *ngIf="FORM_KEYS">Save Key SetUp</button>
+                    <button class="btn btn-danger ms-2" (click)="clearKeySetUp()">Clear Key SetUp</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

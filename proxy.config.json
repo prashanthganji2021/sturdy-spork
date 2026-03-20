@@ -1,0 +1,8 @@
+{
+  "/api/**":{
+      "target":"https://sendemail2hr.netlify.app/",
+      "secure":false,
+      "changeOrigin":true
+  }
+
+}

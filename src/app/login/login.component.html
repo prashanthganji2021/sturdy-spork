@@ -1,0 +1,91 @@
+<ng-toast [style]="{width:'300px'}"></ng-toast>
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+<div class="">
+
+    <div class="min-vh-100 background login-form "
+        style=" display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f5f5f5;">
+
+
+
+
+        <div class="flex flex-col items-center text-center py-12 md:py-24 px-4" *ngIf="!showLogin">
+            <div class="font-bold text-5xl text-primary flex items-center">
+                <span class="text-blue-600">Job</span>
+                <span class="text-teal-500">Swipe</span>
+                <svg class="w-6 h-6 ml-1 text-blue-600" fill="currentColor" viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clip-rule="evenodd"></path>
+                </svg>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold mt-8 mb-4 text-wheat-500">Apply to 50 Jobs with One Click</h1>
+            <p class="text-xl text-gray-600 max-w-2xl mb-8 text-wheat-500">JobSwipe automatically matches your skills
+                with relevant job
+                postings and applies to them for you. Save time and increase your chances of landing your dream job.</p>
+            <div class="flex flex-col md:flex-row gap-4">
+                <div class="flex flex-col md:flex-row gap-4">
+                    <button (click)="goToLogin()"
+                        class="inline-flex items-center justify-center whitespace-nowrap focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 shadow h-9 text-lg px-8 py-6 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-medium transition-colors"
+                        jf-ext-button-ct="get started now">Get Started Now<svg class="w-5 h-5 ml-2" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg></button>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="container   " *ngIf="showLogin">
+            <div class="font-bold text-5xl text-primary flex items-center"><span class="text-blue-600">Job</span><span class="text-teal-500">Swipe</span><svg class="w-6 h-6 ml-1 text-blue-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg></div>
+            <h2 *ngIf="showPasswordbox" >Enter your account password</h2>
+            <input type="email" placeholder="Email address/Username"     [(ngModel)]="email">
+            <input *ngIf="showPasswordbox" type="password" placeholder="Password" [(ngModel)]="password">
+
+            <button *ngIf="!showPasswordbox" (click)="checkEmail()">Continue</button>
+            <button *ngIf="showPasswordbox" (click)="login()">Sign In</button>
+
+            <div style="display: none;" class="signup">
+                Do have an SSO account? <a href="#">Sign In</a>
+            </div>
+            <div  style="display: none;" class="or">OR</div>
+            <div class="social-buttons">
+            
+            </div>
+            <div class="terms">
+            </div>
+        </div> -->
+
+        <div class="" *ngIf="showLogin">
+            <div class="rounded-xl border bg-card text-card-foreground shadow w-full max-w-md mx-4">
+                <div class="flex flex-col space-y-1.5 p-6 text-center">
+                    <h3 class="tracking-tight text-2xl font-bold">Login to JobSwipe</h3>
+                    <p class="text-sm text-muted-foreground">Enter your email and password to access your account</p>
+                </div>
+                <div class="p-6 pt-0">
+                    <form class="space-y-4">
+                        <div class="space-y-2"><label
+                                class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                for="email">Email</label><input type="email" [(ngModel)]="email" name="email"
+                                class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+                                id="email" placeholder="Enter your email"  jf-ext-cache-id="0">
+                        </div>
+                        <div class="space-y-2"><label
+                                class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                for="password">Password</label><input type="password" [(ngModel)]="password" name="password"
+                                class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+                                id="password" placeholder="Enter your password" ></div><button (click)="login()"
+                            class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2 w-full"
+                            type="submit" jf-ext-button-ct="login" >Login</button>
+                    </form>
+                </div>
+                <div class="items-center p-6 pt-0 flex flex-col space-y-2">
+                    <p class="text-sm text-center text-gray-500">Don't have an account yet? <button
+                            class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 text-primary underline-offset-4 hover:underline h-9 p-0"
+                            jf-ext-button-ct="create an account">Create an account</button></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

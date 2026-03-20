@@ -1,0 +1,34 @@
+<!-- add input of linkedin profile url and click on search show number if available else show not available -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Find Number</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <input type="text" class="form-control" placeholder="Enter Linkedin Profile URL" [(ngModel)]="linkedinUrl">
+    </div>
+  </div>
+
+
+  <div class="row d-flex justify-content-center p-3">
+    <div class="col-auto">
+      <button class="btn btn-primary button-3" (click)="searchNumber()">Search</button>
+    </div>
+
+
+    <div class="col-auto">
+      <button type="submit" class="btn btn-primary button-3" (click)="clear()">Clear</button>
+    </div>
+  </div>
+
+
+  <div class="row" *ngIf="loading">
+    <div class="col-md-12">
+      <h2 [ngClass]="{'result-text': true, 'not-available': !number}">Number: {{ number ? number : 'Not Available' }}</h2>
+    </div>
+  </div>
+
+</div>
